@@ -1,45 +1,39 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import {Divider, Paper, IconButton, InputBase} from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import {GridList, GridListTile, GridListTileBar, ListSubheader} from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      padding: '2px 4px',
-      display: 'flex',
-      alignItems: 'center',
-      width: 400,
-    },
-    input: {
-      marginLeft: theme.spacing(1),
-      flex: 1,
-    },
-    iconButton: {
-      padding: 10,
-    },
-    divider: {
-      height: 28,
-      margin: 4,
-    },
-  }),
-);
+const StyledGridList = styled(GridList)`
+  width: 500px;
+  height: 450px;
+`;
 
-export const SearchForm: React.FunctionComponent<{gifs: string[]}> = () => {
-  const classes = useStyles();
+const StyledGridListTile = styled(GridListTile)`
+  &:hover {
+    border: 1px solid white;
+    cursor: pointer;
+  }
+`;
 
+const StyledIcon = styled(IconButton)`
+  color: rgba(255, 255, 255, 0.54);
+`;
+
+export const ListItem: React.FunctionComponent<{items: any[]}> = ({items}) => {
   return (
-    <Paper component="form" className={classes.root}>
-      <InputBase
-        className={classes.input}
-        placeholder="Search Giphy"
-        inputProps={{ 'aria-label': 'search giphy' }}
-      />
-      <Divider className={classes.divider} orientation="vertical" />
-      <IconButton type="submit" className={classes.iconButton} aria-label="search">
-        <SearchIcon />
-      </IconButton>
-    </Paper>
+    <StyledGridList cellHeight={180}>
+        <GridListTile key="Subheader" cols={2} style={{ height: '20px' }} />
+        {items.map(({images, title, username}, index) => (
+            <StyledGridListTile key={index}>
+              <img src={images.original.url} alt={title} />
+              <GridListTileBar
+                title={title}
+                subtitle={<span>by: {username}</span>}
+              />
+            </StyledGridListTile>
+        ))}
+      </StyledGridList>
   );
 };
