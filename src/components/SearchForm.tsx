@@ -1,45 +1,36 @@
+import SearchIcon from '@material-ui/icons/Search';
 import * as React from 'react';
 
-import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
-import {Divider, Paper, IconButton, InputBase} from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import {StyledDivider, StyledIconButton, StyledInput, StyledPaper} from '../styles';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      padding: '2px 4px',
-      display: 'flex',
-      alignItems: 'center',
-      width: 400,
-    },
-    input: {
-      marginLeft: theme.spacing(1),
-      flex: 1,
-    },
-    iconButton: {
-      padding: 10,
-    },
-    divider: {
-      height: 28,
-      margin: 4,
-    },
-  }),
-);
+type Props = {
+  onSearch: (search: string) => void;
+};
 
-export const SearchForm: React.FunctionComponent<{}> = () => {
-  const classes = useStyles();
+export const SearchForm: React.FunctionComponent<Props> = ({onSearch}) => {
+  const [value, setValue] = React.useState<string>("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  }
+
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    onSearch(value);
+    setValue("");
+  };
 
   return (
-    <Paper component="form" className={classes.root}>
-      <InputBase
-        className={classes.input}
+    <StyledPaper component="form" onSubmit={handleSubmit}>
+      <StyledInput
         placeholder="Search Giphy"
-        inputProps={{ 'aria-label': 'search giphy' }}
+        onChange={handleChange}
+        value={value}
       />
-      <Divider className={classes.divider} orientation="vertical" />
-      <IconButton type="submit" className={classes.iconButton} aria-label="search">
+      <StyledDivider orientation="vertical" />
+      <StyledIconButton onClick={handleSubmit} type="submit" aria-label="search">
         <SearchIcon />
-      </IconButton>
-    </Paper>
+      </StyledIconButton>
+    </StyledPaper>
   );
 };

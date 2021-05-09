@@ -1,70 +1,23 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import {useDispatch, useSelector} from 'react-redux';
 
-import {ListItem, SearchForm} from '../components';
+import {setSearch} from '../actions';
+import {GifCarousel, SearchForm} from '../components';
+import {SearchState} from '../reducers';
 import {Container} from '../styles';
 
-const GIFS = [
-  {
-    title: "neko waving GIF by Anthony Antonellis",
-    username: "Anthony Antonellis",
-    images: {
-      original: {
-      url: "https://media2.giphy.com/media/l2YOwcBh7gnJRsWDm/giphy.gif",
-      },
-    },
-  },
-  {
-    title: "neko waving GIF by Anthony Antonellis",
-    username: "Anthony Antonellis",
-    images: {
-      original: {
-      url: "https://media2.giphy.com/media/l2YOwcBh7gnJRsWDm/giphy.gif",
-      },
-    },
-  },{
-    title: "neko waving GIF by Anthony Antonellis",
-    username: "Anthony Antonellis",
-    images: {
-      original: {
-      url: "https://media2.giphy.com/media/l2YOwcBh7gnJRsWDm/giphy.gif",
-      },
-    },
-  },
-  {
-    title: "neko waving GIF by Anthony Antonellis",
-    username: "Anthony Antonellis",
-    images: {
-      original: {
-      url: "https://media2.giphy.com/media/l2YOwcBh7gnJRsWDm/giphy.gif",
-      },
-    },
-  },
-  {
-    title: "neko waving GIF by Anthony Antonellis",
-    username: "Anthony Antonellis",
-    images: {
-      original: {
-      url: "https://media2.giphy.com/media/l2YOwcBh7gnJRsWDm/giphy.gif",
-      },
-    },
-  },
-  {
-    title: "neko waving GIF by Anthony Antonellis",
-    username: "Anthony Antonellis",
-    images: {
-      original: {
-      url: "https://media2.giphy.com/media/l2YOwcBh7gnJRsWDm/giphy.gif",
-      },
-    },
-  },
-];
-
 export const Home: React.FunctionComponent<{}> = () => {
+  const search = useSelector<SearchState, string>((state) => state.search);
+  const dispatch = useDispatch();
+
+  const onSearch = (search: string) => {
+    dispatch(setSearch(search));
+  };
+
   return (
     <Container>
-      <SearchForm />
-      <ListItem items={GIFS} />
+      <SearchForm onSearch={onSearch} />
+      <GifCarousel search={search} />
     </Container>
   );
 };

@@ -1,2 +1,2 @@
-export * from './ListItem';
+export * from './GifCarousel';
 export * from './SearchForm';
