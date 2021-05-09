@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import {Divider, Paper, IconButton, InputBase} from '@material-ui/core';
+
+import {IconButton, InputBase, Paper} from '@material-ui/core';
 
 export const Container = styled.div`
   position: absolute;
@@ -13,13 +14,22 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+export const FormWrapper = styled.div`
+  text-align: left;
+  margin-bottom: 20px;
+
+  & > span {
+    color: #e91e63;
+  }
+`;
+
 export const StyledPaper = styled(Paper)`
-  padding: 2px 4px;
   display: flex;
   align-items: center;
   width: 400px;
-  margin-bottom: 20px;
-`; 
+  padding: 2px 4px;
+  margin-bottom: 4px;
+`;
 
 export const StyledInput = styled(InputBase)`
   margin-left: 8px;
@@ -30,11 +40,6 @@ export const StyledIconButton = styled(IconButton)`
   padding: 10;
 `;
 
-export const StyledDivider = styled(Divider)`
-  height: 28px;
-  margin: 4px;
-`;
-
-export const Wrapper = styled.div`
+export const CarouselWrapper = styled.div`
   width: 100%;
 `;

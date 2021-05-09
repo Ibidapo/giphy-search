@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom';
 import {GiphyFetch} from '@giphy/js-fetch-api';
 import {Carousel} from '@giphy/react-components';
 
-import {Wrapper} from '../styles';
+import {CarouselWrapper} from '../styles';
 
 const giphyFetch = new GiphyFetch('sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh');
 
@@ -18,7 +18,7 @@ export const GifCarousel: React.FunctionComponent<{search: string}> = ({search})
   const displayGif = (id: string | number) => history.push(`/gif/${id}`);
 
   return (
-    <Wrapper>
+    <CarouselWrapper>
       <Carousel
         key={search}
         fetchGifs={fetchGifs}
@@ -29,6 +29,6 @@ export const GifCarousel: React.FunctionComponent<{search: string}> = ({search})
           displayGif(gif.id);
         }}
       />
-    </Wrapper>
+    </CarouselWrapper>
   );
 };
