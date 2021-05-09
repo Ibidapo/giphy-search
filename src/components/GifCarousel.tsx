@@ -18,7 +18,7 @@ export const GifCarousel: React.FunctionComponent<{search: string}> = ({search})
   const displayGif = (id: string | number) => history.push(`/gif/${id}`);
 
   return (
-    <CarouselWrapper>
+    <CarouselWrapper data-testid="carousel">
       <Carousel
         key={search}
         fetchGifs={fetchGifs}

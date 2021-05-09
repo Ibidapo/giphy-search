@@ -20,11 +20,11 @@ export const GifSearchForm: React.FunctionComponent<Props> = ({onSearch}) => {
     event.preventDefault();
 
     if (!query) {
-      onSearch('');
       setError(true);
       return;
     }
 
+    setError(false);
     onSearch(query);
     setQuery('');
   };
@@ -37,12 +37,17 @@ export const GifSearchForm: React.FunctionComponent<Props> = ({onSearch}) => {
           onChange={handleChange}
           value={query}
         />
-        <StyledIconButton onClick={handleSubmit} type="submit" aria-label="search">
+        <StyledIconButton
+          aria-label="search-button"
+          data-testid="search-button" 
+          onClick={handleSubmit}
+          type="submit"
+        >
           <SearchIcon />
         </StyledIconButton>
       </StyledPaper>
       {error && (
-        <span>This field requires a value</span>
+        <span data-testid="error-message">This field requires a value</span>
       )}
     </FormWrapper>
   );
