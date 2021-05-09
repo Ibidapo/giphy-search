@@ -1,2 +1,2 @@
 export * from './GifCarousel';
-export * from './SearchForm';
+export * from './GifSearchForm';

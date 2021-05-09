@@ -1,10 +1,9 @@
-import React from "react";
+import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import {GifDemo, Home} from './pages';
-import reportWebVitals from './reportWebVitals';
+import {Display, Home} from './pages';
 import {store} from './store'
 
 ReactDOM.render(
@@ -14,15 +13,10 @@ ReactDOM.render(
         <img src="../giphy-logo.gif" width="200" alt="Powered by GIPHY" />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/gif/:id"  component={GifDemo} />
+          <Route path="/gif/:id"  component={Display} />
         </Switch>
       </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

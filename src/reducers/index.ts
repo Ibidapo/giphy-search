@@ -5,12 +5,12 @@ export interface SearchState {
 }
 
 const initialState: SearchState = {
-  search: "",
+  search: '',
 };
 
 export const searchReducer = (state = initialState, action: Action) => {
   switch(action.type) {
-    case "SET_SEARCH":
+    case 'SET_SEARCH':
       return {...state, search: action.payload};
     default: 
       return state;

@@ -1,5 +1,6 @@
-import SearchIcon from '@material-ui/icons/Search';
 import * as React from 'react';
+
+import SearchIcon from '@material-ui/icons/Search';
 
 import {StyledDivider, StyledIconButton, StyledInput, StyledPaper} from '../styles';
 
@@ -7,17 +8,17 @@ type Props = {
   onSearch: (search: string) => void;
 };
 
-export const SearchForm: React.FunctionComponent<Props> = ({onSearch}) => {
-  const [value, setValue] = React.useState<string>("");
+export const GifSearchForm: React.FunctionComponent<Props> = ({onSearch}) => {
+  const [query, setQuery] = React.useState<string>('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    setQuery(event.target.value);
   }
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLDivElement>) => {
     event.preventDefault();
-    onSearch(value);
-    setValue("");
+    onSearch(query);
+    setQuery('');
   };
 
   return (
@@ -25,7 +26,7 @@ export const SearchForm: React.FunctionComponent<Props> = ({onSearch}) => {
       <StyledInput
         placeholder="Search Giphy"
         onChange={handleChange}
-        value={value}
+        value={query}
       />
       <StyledDivider orientation="vertical" />
       <StyledIconButton onClick={handleSubmit} type="submit" aria-label="search">

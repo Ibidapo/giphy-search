@@ -1,2 +1,2 @@
-export * from './GifDemo';
+export * from './Display';
 export * from './Home';
