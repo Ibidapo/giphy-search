@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import {IconButton, InputBase, Paper} from '@material-ui/core';
 
+const errorColor = '#e91e63';
+
 export const Container = styled.div`
   position: absolute;
   top: 0;
@@ -17,18 +19,20 @@ export const Container = styled.div`
 export const FormWrapper = styled.div`
   text-align: left;
   margin-bottom: 20px;
+  width: 375px;
 
   & > span {
-    color: #e91e63;
+    font-size: 14px;
+    color: ${errorColor};
+    margin-left: 12px;
   }
 `;
 
 export const StyledPaper = styled(Paper)`
   display: flex;
   align-items: center;
-  width: 400px;
   padding: 2px 4px;
-  margin-bottom: 4px;
+  margin: 4px;
 `;
 
 export const StyledInput = styled(InputBase)`
@@ -42,4 +46,10 @@ export const StyledIconButton = styled(IconButton)`
 
 export const CarouselWrapper = styled.div`
   width: 100%;
+`;
+
+export const NoResultWrapper = styled.p`
+  text-align: center;
+  color: ${errorColor};
+  margin: 0;
 `;

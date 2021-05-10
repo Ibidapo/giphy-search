@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom';
 import {GiphyFetch} from '@giphy/js-fetch-api';
 import {Carousel} from '@giphy/react-components';
 
-import {CarouselWrapper} from '../styles';
+import {CarouselWrapper, NoResultWrapper} from '../styles';
 
 const giphyFetch = new GiphyFetch('sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh');
 
@@ -28,6 +28,7 @@ export const GifCarousel: React.FunctionComponent<{search: string}> = ({search})
           event.preventDefault();
           displayGif(gif.id);
         }}
+        noResultsMessage={search && <NoResultWrapper>We couldn't find a gif for **{search}** 😔</NoResultWrapper>}
       />
     </CarouselWrapper>
   );
