@@ -13,7 +13,9 @@ export const GifSearchForm: React.FunctionComponent<Props> = ({onSearch}) => {
   const [error, setError] = React.useState<boolean>(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+    const trimmedValue = event.target.value.trim();
+
+    setQuery(trimmedValue);
   }
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLDivElement>) => {
